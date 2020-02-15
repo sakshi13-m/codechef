@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+ll max(ll a[],ll n){
+    ll m=a[0];
+    for(ll i=0;i<n;i++){
+        if(m<a[i])
+            m=a[i];
+    }
+    return m;
+}
+
+ll val(ll a[],ll n, ll w){
+    for(ll i=0;i<n;i++){
+        if(a[i]==w)
+            return i;
+    }
+}
+
+int main() {
+	long int t;
+	cin>>t;
+	while(t--){
+	    ll n,k,i,r=0,s1=0,s2=0;
+	    cin>>n>>k;
+	    ll a[n];
+	    for(i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	    }
+	    ll m=max(a,n);
+	    ll c=val(a,n,m);
+	    for(i=0;i<=c;i++){
+	        if(a[i]%k!=0)
+	            s1+=a[i]%k;
+	    }
+	    
+	    for(i=c+1;i<n;i++)
+	    {
+	        s2+=a[i];
+	    }
+	    r=(s1+s2)%k;
+	    cout<<r<<endl;
+	    
+	}
+	return 0;
+}
